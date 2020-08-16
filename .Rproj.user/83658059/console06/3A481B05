@@ -1,0 +1,4 @@
+]0;/home/rory/Projects/STAT432/assignment2(base) ]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ echo "# stat432ass2" >> README.md
+]0;/home/rory/Projects/STAT432/assignment2(base) ]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git init
+Initialized empty Git repository in /home/rory/Projects/STAT432/assignment2/.git/
+]0;/home/rory/Projects/STAT432/assignment2(base) ]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .

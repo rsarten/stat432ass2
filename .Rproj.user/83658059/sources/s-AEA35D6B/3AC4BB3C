@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1597571491407.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3AC4BB3C",
+    "lastKnownWriteTime" : 1597570820,
+    "last_content_update" : 1597571491407,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "E556F531",
+        "caption" : "lfuncmat2",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=lfuncmat2&cache_key=E556F531",
+        "displayedObservations" : 21,
+        "environment" : "",
+        "object" : "lfuncmat2",
+        "preview" : 0,
+        "totalObservations" : 21,
+        "variables" : 21
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1597572618210.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1494C444",
+    "lastKnownWriteTime" : 55834574860,
+    "last_content_update" : 1597572618210,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3840237D",
+        "caption" : "tidy_matrix",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=tidy_matrix&cache_key=3840237D",
+        "displayedObservations" : 441,
+        "environment" : "",
+        "object" : "tidy_matrix",
+        "preview" : 0,
+        "totalObservations" : 441,
+        "variables" : 3
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
