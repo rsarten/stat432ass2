@@ -53,3 +53,5 @@ o1 <- optim(par = 0.5, fn = llikeunfc, method = "L-BFGS-B",
 o1$par
 o1$value
 
+factorial(6)/6
+factorial(5)

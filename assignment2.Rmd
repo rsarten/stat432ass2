@@ -1,0 +1,71 @@
+---
+title: "STAT432 Assignment 2"
+author: "Rory Sarten 301005654"
+date: "21 August 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr)
+```
+
+## Question 1
+
+a) 
+
+These are independent binomial processes (despite happening in sequence), so the three trapping occasions can be denoted:
+
+$$n_1 \sim Binomial(N, \theta) = \binom{N}{n_{1}} \theta^{n_1} (1 - \theta)^{N - n_1}$$
+$$n_2 \sim Binomial(N - n_1, \theta) = 
+\binom{N - n_1}{n_{2}} \theta^{n_2} (1 - \theta)^{N - n_1 - n_2}$$
+
+$$n_3 \sim Binomial(N - n_1 - n_2, \theta) = 
+\binom{N - n_1 - n_2}{n_{3}} \theta^{n_3} (1 - \theta)^{N - n_1 - n_2 - n_3}$$
+
+So the probability of catching $n_1 + n_2 + n_3$ rats is given by 
+
+$$Binomial(N, \theta) \times Binomial(N - n_1, \theta) \times Binomial(N - n_1 - N-2, \theta)$$
+
+b)
+
+$$\ell(N,\theta)=\ln \left[ \dfrac{N!}{n_1(N-n_1)!}\theta^{n_1}(1-\theta)^{N-n_1}\times\dfrac{(N-n_1)!}{n_2(N-n_1-n_2)!}\theta^{n_2}(1-\theta)^{N-n_1-n_2}\times\dfrac{(N-n_1-n_2)!}{n_3(N-n_1-n_2-n_3)!}\theta^{n_3}(1-\theta)^{N-n_1-n_2-n_3}\right]$$
+
+$$\ell(N,\theta) = 
+\ln N! - [\ln n_1 + \ln (N-n_1)] + n_1 \ln \theta + (N-n_1)\ln (1 - \theta) +$$
+$$\ln (N-n_1)! - [\ln n_2 + \ln (N-n_1-n_2)] + n_2 \ln \theta + (N-n_1-n_2)\ln (1 - \theta) +$$
+$$\ln (N-n_1-n_2)! - [\ln n_3 + \ln (N-n_1-n_2-n_3)] + n_3 \ln \theta + (N-n_1-n_2-n_3)\ln (1 - \theta)$$
+
+finish that bit of algebra somehow
+
+c)
+
+```{r solve_c}
+llfunc <- function(par, n1, n2, n3) {
+  N <- par[1]
+  theta <- par[2]
+  lfactorial(N) - lfactorial(N - n1 - n2 - n3) +
+    sum(n1, n2, n3)*log(theta) + 
+    (3*N - 3*n1 - 2*n2 - n3)*log(1 - theta)
+}
+
+n1 <- 82L
+n2 <- 54L
+n3 <- 23L
+## since N >= n1 + n2 + n3
+N_0 <- n1 + n2 + n3
+par_start <- c(N_0, 0.5)
+
+optim_fit <- optim(par = par_start,
+                   fn = llfunc,
+                   n1 = n1, n2 = n2, n3 = n3,
+                   lower = c(N_0, 1e-4),
+                   upper = c(Inf, 1),
+                   method = "L-BFGS-B",
+                   control = list(fnscale = -1),
+                   hessian = TRUE)
+
+optim_fit$par
+optim_fit$value
+
+```
