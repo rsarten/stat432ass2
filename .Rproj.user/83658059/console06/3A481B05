@@ -141,3 +141,43 @@ Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
 [  0%] Reading package lists                            [  0%] Building dependency tree                               [100%] Building dependency tree                               [  0%] Reading state information                                [ 17%] Reading state information                                [  0%] Reading extended state information                                         [  0%] Initializing package states                                  [  0%] Writing extended state information                                         [100%] Writing extended state information                                         [  0%] Building tag database                            
 Current status: 2 (-2) upgradable.
 ]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git commit -m "add CI"[K[K[K[K[K[K[Kadd Q1 - c) CI"
+[master a6109af] add Q1 - c) CI
+ 7 files changed, 182 insertions(+), 9 deletions(-)
+ rewrite .Rproj.user/83658059/console06/INDEX001 (86%)
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git push
+error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': rsarten
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://rsarten@github.com': 
+Enumerating objects: 27, done.
+Counting objects:   3% (1/27)Counting objects:   7% (2/27)Counting objects:  11% (3/27)Counting objects:  14% (4/27)Counting objects:  18% (5/27)Counting objects:  22% (6/27)Counting objects:  25% (7/27)Counting objects:  29% (8/27)Counting objects:  33% (9/27)Counting objects:  37% (10/27)Counting objects:  40% (11/27)Counting objects:  44% (12/27)Counting objects:  48% (13/27)Counting objects:  51% (14/27)Counting objects:  55% (15/27)Counting objects:  59% (16/27)Counting objects:  62% (17/27)Counting objects:  66% (18/27)Counting objects:  70% (19/27)Counting objects:  74% (20/27)Counting objects:  77% (21/27)Counting objects:  81% (22/27)Counting objects:  85% (23/27)Counting objects:  88% (24/27)Counting objects:  92% (25/27)Counting objects:  96% (26/27)Counting objects: 100% (27/27)Counting objects: 100% (27/27), done.
+Delta compression using up to 4 threads
+Compressing objects:   7% (1/13)Compressing objects:  15% (2/13)Compressing objects:  23% (3/13)Compressing objects:  30% (4/13)Compressing objects:  38% (5/13)Compressing objects:  46% (6/13)Compressing objects:  53% (7/13)Compressing objects:  61% (8/13)Compressing objects:  69% (9/13)Compressing objects:  76% (10/13)Compressing objects:  84% (11/13)Compressing objects:  92% (12/13)Compressing objects: 100% (13/13)Compressing objects: 100% (13/13), done.
+Writing objects:   7% (1/14)Writing objects:  14% (2/14)Writing objects:  21% (3/14)Writing objects:  28% (4/14)Writing objects:  35% (5/14)Writing objects:  42% (6/14)Writing objects:  50% (7/14)Writing objects:  57% (8/14)Writing objects:  64% (9/14)Writing objects:  71% (10/14)Writing objects:  78% (11/14)Writing objects:  85% (12/14)Writing objects:  92% (13/14)Writing objects: 100% (14/14)Writing objects: 100% (14/14), 93.34 KiB | 6.22 MiB/s, done.
+Total 14 (delta 5), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/5)[Kremote: Resolving deltas:  20% (1/5)[Kremote: Resolving deltas:  40% (2/5)[Kremote: Resolving deltas:  60% (3/5)[Kremote: Resolving deltas:  80% (4/5)[Kremote: Resolving deltas: 100% (5/5)[Kremote: Resolving deltas: 100% (5/5), completed with 5 local objects.[K
+To https://github.com/rsarten/stat432ass2.git
+   62f29fe..a6109af  master -> master
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ add .
+
+Command 'add' not found, did you mean:
+
+  command 'tdd' from deb devtodo
+  command 'dd' from deb coreutils
+  command 'adbd' from deb android-tools-adbd
+  command 'ddd' from deb ddd
+  command 'ldd' from deb libc-bin
+  command 'aid' from deb id-utils
+  command 'adb' from deb adb
+  command 'atd' from deb at
+  command 'dad' from deb debian-dad
+  command 'pdd' from deb pdd
+  command 'axd' from deb afnix
+  command 'amd' from deb am-utils
+  command 'and' from deb and
+  command 'ad' from deb netatalk
+
+Try: sudo apt install <deb name>
+
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .

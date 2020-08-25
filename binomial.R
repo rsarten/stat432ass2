@@ -75,14 +75,27 @@ base_plot <- ggplot(MASS::geyser, aes(x = duration, y = waiting)) +
 base_plot + 
   stat_density2d(aes(color = ..level..))
 
-ci <- outcome[outcome$value == max(surface) - 3, ]
+ci <- outcome[outcome$value == max(surface) - 3 | outcome$value == max(surface) - 2, ]
+
+ggplot() +
+  stat_contour(data = ci, mapping = aes(x = N, y = theta, z = value))
 
 ggplot(data = outcome, mapping = aes(N, theta, z = value)) + 
   stat_contour(bins = 40) +
   metR::geom_text_contour(aes(z = value)) +
   stat_contour(data = ci, mapping = aes(x = N, y = theta, z = value), colour = "red", bins = 1)
 
+summary(faithfuld$density)
 
+ggplot(data = outcome, mapping = aes(N, theta)) + 
+  geom_contour(aes(z = value,
+                   colour = factor(..level.. == max(surface) - 3,
+                                   levels = c(F, T),
+                                   labels = c("something", "95% CI"))),
+               breaks = c(480, 487.04, 490)) +
+  scale_colour_manual(values = c("black", "red")) + 
+  labs(colour = "Of interest:")
+  
 ggplot(faithfuld, aes(eruptions, waiting)) + 
   geom_contour(aes(z = density, 
                    colour = factor(..level.. == 0.02, 
