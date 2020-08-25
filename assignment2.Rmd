@@ -8,6 +8,7 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(magrittr)
+library(ggplot2)
 ```
 
 ## Question 1
@@ -65,7 +66,43 @@ optim_fit <- optim(par = par_start,
                    control = list(fnscale = -1),
                    hessian = TRUE)
 
-optim_fit$par
-optim_fit$value
+MLE <- optim_fit$par
+SE <- sqrt(diag(solve(-optim_fit$hessian)))
+LowerBound <- MLE - qnorm(0.975) * SE
+UpperBound <- MLE + qnorm(0.975) * SE
+results <- cbind(MLE, SE, LowerBound, UpperBound) %>% round(2)
+rownames(results) <- c("N", "theta")
+results
+```
+
+The maximum likelihood point $\hat{N} = 189.43$ with confidence interval $(163.49, 215.36)$
+The maximum likelihood point $\hat{\theta} = 0.45$ with confidence interval $(0.34, 0.57)$
+
+d)
+
+```{r contour_map}
+n_vals <- seq(from = n1+n2+n3, to = 240, length = 100)
+theta_vals <- seq(from = 1e-5, to = 1, length = 100)
+
+combos
+surface <- apply(expand.grid(n_vals, theta_vals), 1, llfunc, n1 = n1, n2 = n2, n3 = n3)
+
+surface <- array(apply(as.matrix(expand.grid(thetavec, thetavec)), # work through expand.grid combinations
+                         1, bin_multiple, xvec = xvec, nvec = nvec), 
+                   dim = c(ntheta, ntheta)) # shape to ntheta*ntheta matrix
+
+tidy_matrix <- lfuncmat2 %>% 
+  as.data.frame() %>% 
+  mutate(theta1 = 1:n()) %>% 
+  tidyr::gather(key = "theta2", value = "value", V1:V21) %>% 
+  mutate(theta1 = as.numeric(theta1),
+         theta2 = stringr::str_remove(theta2, "[A-Z]"),
+         theta2 = as.numeric(theta2))
+
+ggplot(tidy_matrix, aes(theta1, theta2, z = value)) + geom_raster(aes(fill = value)) + geom_contour(bins = 20)
 
 ```
+
+
+
+things

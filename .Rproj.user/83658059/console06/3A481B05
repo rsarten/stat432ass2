@@ -41,3 +41,103 @@ To https://github.com/rsarten/stat432ass2.git
  * [new branch]      master -> master
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 git add .
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git commit -m "start 1[Kq1"
+[master 62f29fe] start q1
+ 18 files changed, 123 insertions(+), 168 deletions(-)
+ rewrite .Rproj.user/83658059/console06/INDEX001 (84%)
+ delete mode 100644 .Rproj.user/83658059/sources/s-AEA35D6B/1494C444
+ delete mode 100644 .Rproj.user/83658059/sources/s-AEA35D6B/1494C444-contents
+ delete mode 100644 .Rproj.user/83658059/sources/s-AEA35D6B/3AC4BB3C
+ delete mode 100644 .Rproj.user/83658059/sources/s-AEA35D6B/3AC4BB3C-contents
+ delete mode 100644 .Rproj.user/83658059/sources/s-AEA35D6B/817AA75A
+ delete mode 100644 .Rproj.user/83658059/sources/s-AEA35D6B/817AA75A-contents
+ delete mode 100644 .Rproj.user/83658059/sources/s-AEA35D6B/89AB0AF
+ delete mode 100644 .Rproj.user/83658059/sources/s-AEA35D6B/89AB0AF-contents
+ delete mode 100644 .Rproj.user/83658059/sources/s-AEA35D6B/lock_file
+ create mode 100644 .gitignore
+ create mode 100644 assignment2.Rmd
+ create mode 100644 assignment2.pdf
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git push origin master 
+error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': rsarten
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://rsarten@github.com': 
+Enumerating objects: 32, done.
+Counting objects:   3% (1/32)Counting objects:   6% (2/32)Counting objects:   9% (3/32)Counting objects:  12% (4/32)Counting objects:  15% (5/32)Counting objects:  18% (6/32)Counting objects:  21% (7/32)Counting objects:  25% (8/32)Counting objects:  28% (9/32)Counting objects:  31% (10/32)Counting objects:  34% (11/32)Counting objects:  37% (12/32)Counting objects:  40% (13/32)Counting objects:  43% (14/32)Counting objects:  46% (15/32)Counting objects:  50% (16/32)Counting objects:  53% (17/32)Counting objects:  56% (18/32)Counting objects:  59% (19/32)Counting objects:  62% (20/32)Counting objects:  65% (21/32)Counting objects:  68% (22/32)Counting objects:  71% (23/32)Counting objects:  75% (24/32)Counting objects:  78% (25/32)Counting objects:  81% (26/32)Counting objects:  84% (27/32)Counting objects:  87% (28/32)Counting objects:  90% (29/32)Counting objects:  93% (30/32)Counting objects:  96% (31/32)Counting objects: 100% (32/32)Counting objects: 100% (32/32), done.
+Delta compression using up to 4 threads
+Compressing objects:   6% (1/15)Compressing objects:  13% (2/15)Compressing objects:  20% (3/15)Compressing objects:  26% (4/15)Compressing objects:  33% (5/15)Compressing objects:  40% (6/15)Compressing objects:  46% (7/15)Compressing objects:  53% (8/15)Compressing objects:  60% (9/15)Compressing objects:  66% (10/15)Compressing objects:  73% (11/15)Compressing objects:  80% (12/15)Compressing objects:  86% (13/15)Compressing objects:  93% (14/15)Compressing objects: 100% (15/15)Compressing objects: 100% (15/15), done.
+Writing objects:   5% (1/18)Writing objects:  11% (2/18)Writing objects:  16% (3/18)Writing objects:  22% (4/18)Writing objects:  27% (5/18)Writing objects:  33% (6/18)Writing objects:  38% (7/18)Writing objects:  44% (8/18)Writing objects:  50% (9/18)Writing objects:  55% (10/18)Writing objects:  61% (11/18)Writing objects:  66% (12/18)Writing objects:  72% (13/18)Writing objects:  77% (14/18)Writing objects:  83% (15/18)Writing objects:  88% (16/18)Writing objects:  94% (17/18)Writing objects: 100% (18/18)Writing objects: 100% (18/18), 198.57 KiB | 12.41 MiB/s, done.
+Total 18 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To https://github.com/rsarten/stat432ass2.git
+   ac26d0d..62f29fe  master -> master
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ shutdown now
+^C]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ sudo aptitude install libcurl4-openssl-dev
+[sudo] password for rory: ***********           
+[  0%] Reading package lists                            [100%] Reading package lists                            [  0%] Building dependency tree                               [100%] Building dependency tree                               [  0%] Reading state information                                [ 16%] Reading state information                                [  0%] Reading extended state information                                         [  0%] Initializing package states                                  [  0%] Writing extended state information                                         [  0%] Building tag database                            [100%] Building tag database                            The following NEW packages will be installed:
+  libcurl4-openssl-dev{b} 
+The following packages will be REMOVED:
+  gir1.2-mate-desktop{u} gir1.2-mate-panel{u} gyp{u} libc-ares2{u} libhttp-parser2.7.1{u} libjs-async{u} libjs-inherits{u} 
+  libjs-node-uuid{u} libllvm9{u} libuv1{u} libuv1-dev{u} 
+The following packages will be upgraded:
+  libcurl4 
+1 packages upgraded, 1 newly installed, 11 to remove and 3 not upgraded.
+Need to get 508 kB of archives. After unpacking 70.1 MB will be freed.
+The following packages have unmet dependencies:
+ libcurl4-openssl-dev : Conflicts: libssl1.0-dev but 1.0.2n-1ubuntu5.3 is installed
+ curl : Depends: libcurl4 (= 7.58.0-2ubuntu3.9) but 7.58.0-2ubuntu3.10 is to be installed
+The following actions will resolve these dependencies:
+
+     Remove the following packages:                                                          
+1)     libssl1.0-dev [1.0.2n-1ubuntu5.3 (bionic-security, bionic-updates, now)]              
+
+     Upgrade the following packages:                                                         
+2)     curl [7.58.0-2ubuntu3.9 (now) -> 7.58.0-2ubuntu3.10 (bionic-security, bionic-updates)]
+
+
+
+Accept this solution? [Y/n/q/?] Y
+The following NEW packages will be installed:
+  libcurl4-openssl-dev 
+The following packages will be REMOVED:
+  gir1.2-mate-desktop{u} gir1.2-mate-panel{u} gyp{u} libc-ares2{u} libhttp-parser2.7.1{u} libjs-async{u} libjs-inherits{u} 
+  libjs-node-uuid{u} libllvm9{u} libssl1.0-dev{a} libuv1{u} libuv1-dev{u} 
+The following packages will be upgraded:
+  curl libcurl4 
+2 packages upgraded, 1 newly installed, 12 to remove and 2 not upgraded.
+Need to get 667 kB of archives. After unpacking 77.3 MB will be freed.
+Do you want to continue? [Y/n/?]  Y
+[  0%] Writing extended state information                                         [100%] Writing extended state information                                         0% [Working]            0% [Connecting to archive.ubuntu.com (91.189.88.152)]                                                     0% [Waiting for headers]                        Get: 1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 curl amd64 7.58.0-2ubuntu3.10 [159 kB]
+1% [1 curl 4,869 B/159 kB 3%]                             6% [1 curl 38.4 kB/159 kB 24%]                              24% [Working]             Get: 2 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl4 amd64 7.58.0-2ubuntu3.10 [214 kB]
+24% [2 libcurl4 1,005 B/214 kB 0%]                                  56% [Waiting for headers]                         Get: 3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl4-openssl-dev amd64 7.58.0-2ubuntu3.10 [294 kB]
+56% [3 libcurl4-openssl-dev 526 B/294 kB 0%]                                            100% [Working]              Fetched 667 kB in 3s (235 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 494509 files and directories currently installed.)
+Removing gir1.2-mate-desktop (1.22.2-1+tricia) ...
+Removing gir1.2-mate-panel (1.22.2-1mint1+tricia) ...
+Removing gyp (0.1+20150913git1f374df9-1ubuntu1) ...
+Removing libc-ares2:amd64 (1.14.0-1) ...
+Removing libhttp-parser2.7.1:amd64 (2.7.1-2) ...
+Removing libjs-async (0.8.0-3) ...
+Removing libjs-inherits (2.0.3-1) ...
+Removing libjs-node-uuid (1.4.7-5) ...
+Removing libllvm9:amd64 (1:9-2~ubuntu18.04.2) ...
+Removing libssl1.0-dev:amd64 (1.0.2n-1ubuntu5.3) ...
+Removing libuv1-dev:amd64 (1.18.0-3) ...
+Removing libuv1:amd64 (1.18.0-3) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 494301 files and directories currently installed.)
+Preparing to unpack .../curl_7.58.0-2ubuntu3.10_amd64.deb ...
+Unpacking curl (7.58.0-2ubuntu3.10) over (7.58.0-2ubuntu3.9) ...
+Preparing to unpack .../libcurl4_7.58.0-2ubuntu3.10_amd64.deb ...
+Unpacking libcurl4:amd64 (7.58.0-2ubuntu3.10) over (7.58.0-2ubuntu3.9) ...
+Selecting previously unselected package libcurl4-openssl-dev:amd64.
+Preparing to unpack .../libcurl4-openssl-dev_7.58.0-2ubuntu3.10_amd64.deb ...
+Unpacking libcurl4-openssl-dev:amd64 (7.58.0-2ubuntu3.10) ...
+Setting up libcurl4:amd64 (7.58.0-2ubuntu3.10) ...
+Setting up libcurl4-openssl-dev:amd64 (7.58.0-2ubuntu3.10) ...
+Setting up curl (7.58.0-2ubuntu3.10) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
+[  0%] Reading package lists                            [  0%] Building dependency tree                               [100%] Building dependency tree                               [  0%] Reading state information                                [ 17%] Reading state information                                [  0%] Reading extended state information                                         [  0%] Initializing package states                                  [  0%] Writing extended state information                                         [100%] Writing extended state information                                         [  0%] Building tag database                            
+Current status: 2 (-2) upgradable.
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .

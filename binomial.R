@@ -55,3 +55,39 @@ o1$value
 
 factorial(6)/6
 factorial(5)
+
+
+n_vals <- seq(from = n1+n2+n3, to = 240, length = 100)
+theta_vals <- seq(from = 0.3, to = 0.6, length = 100)
+
+combos <- expand.grid(n_vals, theta_vals)
+surface <- apply(expand.grid(n_vals, theta_vals), 1, llfunc, n1 = n1, n2 = n2, n3 = n3) %>% round(2)
+outcome <- cbind(combos, surface)
+names(outcome) <- c("N", "theta", "value")
+summary(surface)
+
+ggplot(data = outcome, mapping = aes(N, theta)) +
+  stat_density2d(aes(colour = ..level.., stat = "identity"))
+
+base_plot <- ggplot(MASS::geyser, aes(x = duration, y = waiting)) + 
+  geom_point()
+
+base_plot + 
+  stat_density2d(aes(color = ..level..))
+
+ci <- outcome[outcome$value == max(surface) - 3, ]
+
+ggplot(data = outcome, mapping = aes(N, theta, z = value)) + 
+  stat_contour(bins = 40) +
+  metR::geom_text_contour(aes(z = value)) +
+  stat_contour(data = ci, mapping = aes(x = N, y = theta, z = value), colour = "red", bins = 1)
+
+
+ggplot(faithfuld, aes(eruptions, waiting)) + 
+  geom_contour(aes(z = density, 
+                   colour = factor(..level.. == 0.02, 
+                                   levels = c(F, T), 
+                                   labels = c("Others", "0.02"))),
+               breaks = 0.005*0:10) + 
+  scale_colour_manual(values = c("black", "red")) + 
+  labs(colour = "Of interest:")
