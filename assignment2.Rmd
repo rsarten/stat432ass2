@@ -76,31 +76,40 @@ results
 ```
 
 The maximum likelihood point $\hat{N} = 189.43$ with confidence interval $(163.49, 215.36)$
+
 The maximum likelihood point $\hat{\theta} = 0.45$ with confidence interval $(0.34, 0.57)$
 
 d)
 
+Contour map of $(N, \theta)$ surface
+
 ```{r contour_map}
-n_vals <- seq(from = n1+n2+n3, to = 240, length = 100)
-theta_vals <- seq(from = 1e-5, to = 1, length = 100)
+n_vals <- seq(from = n1+n2+n3, to = 260, length = 100)
+theta_vals <- seq(from = 0.2, to = 0.7, length = 100)
 
-combos
-surface <- apply(expand.grid(n_vals, theta_vals), 1, llfunc, n1 = n1, n2 = n2, n3 = n3)
+combos <- expand.grid(n_vals, theta_vals)
+surface <- apply(expand.grid(n_vals, theta_vals), 1, llfunc, n1 = n1, n2 = n2, n3 = n3) %>% round(2)
+outcome <- cbind(combos, surface)
+names(outcome) <- c("N", "theta", "value")
 
-surface <- array(apply(as.matrix(expand.grid(thetavec, thetavec)), # work through expand.grid combinations
-                         1, bin_multiple, xvec = xvec, nvec = nvec), 
-                   dim = c(ntheta, ntheta)) # shape to ntheta*ntheta matrix
-
-tidy_matrix <- lfuncmat2 %>% 
-  as.data.frame() %>% 
-  mutate(theta1 = 1:n()) %>% 
-  tidyr::gather(key = "theta2", value = "value", V1:V21) %>% 
-  mutate(theta1 = as.numeric(theta1),
-         theta2 = stringr::str_remove(theta2, "[A-Z]"),
-         theta2 = as.numeric(theta2))
-
-ggplot(tidy_matrix, aes(theta1, theta2, z = value)) + geom_raster(aes(fill = value)) + geom_contour(bins = 20)
-
+ggplot(data = outcome, mapping = aes(N, theta)) + 
+  geom_contour(aes(z = value),
+                   breaks = seq(from = min(outcome$value), to = max(outcome$value), by = 12)) +
+  geom_contour(aes(z = value,
+                   colour = factor(..level.. == max(surface) - 1.92,
+                                   levels = c(F, T),
+                                   labels = c("Single 95% CI "))),
+               breaks = max(surface) - 1.92) +
+  geom_contour(aes(z = value,
+                   colour = factor(..level.. == max(surface) - 3,
+                                   levels = c(F, T),
+                                   labels = c("Joint 95% CI "))),
+               breaks = max(surface) - 3) +
+  geom_point(mapping = aes(x = MLE[1], y = MLE[2]), colour = "darkblue") +
+  labs(colour = "Of interest:") +
+  #ggtitle("Contour map of (N, \u03B8) surface") +
+  #ylab("\u03B8") +
+  theme_minimal()
 ```
 
 

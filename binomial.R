@@ -57,8 +57,22 @@ factorial(6)/6
 factorial(5)
 
 
-n_vals <- seq(from = n1+n2+n3, to = 240, length = 100)
-theta_vals <- seq(from = 0.3, to = 0.6, length = 100)
+########################################################
+## Contour Plot
+
+llfunc <- function(par, n1, n2, n3) {
+  N <- par[1]
+  theta <- par[2]
+  lfactorial(N) - lfactorial(N - n1 - n2 - n3) +
+    sum(n1, n2, n3)*log(theta) + 
+    (3*N - 3*n1 - 2*n2 - n3)*log(1 - theta)
+}
+
+n1 <- 82L
+n2 <- 54L
+n3 <- 23L
+n_vals <- seq(from = n1+n2+n3, to = 260, length = 100)
+theta_vals <- seq(from = 0.2, to = 0.7, length = 100)
 
 combos <- expand.grid(n_vals, theta_vals)
 surface <- apply(expand.grid(n_vals, theta_vals), 1, llfunc, n1 = n1, n2 = n2, n3 = n3) %>% round(2)
@@ -66,26 +80,23 @@ outcome <- cbind(combos, surface)
 names(outcome) <- c("N", "theta", "value")
 summary(surface)
 
-ggplot(data = outcome, mapping = aes(N, theta)) +
-  stat_density2d(aes(colour = ..level.., stat = "identity"))
-
-base_plot <- ggplot(MASS::geyser, aes(x = duration, y = waiting)) + 
-  geom_point()
-
-base_plot + 
-  stat_density2d(aes(color = ..level..))
-
-ci <- outcome[outcome$value == max(surface) - 3 | outcome$value == max(surface) - 2, ]
-
-ggplot() +
-  stat_contour(data = ci, mapping = aes(x = N, y = theta, z = value))
-
-ggplot(data = outcome, mapping = aes(N, theta, z = value)) + 
-  stat_contour(bins = 40) +
-  metR::geom_text_contour(aes(z = value)) +
-  stat_contour(data = ci, mapping = aes(x = N, y = theta, z = value), colour = "red", bins = 1)
-
-summary(faithfuld$density)
+ggplot(data = outcome, mapping = aes(N, theta)) + 
+  geom_contour(aes(z = value),
+                   breaks = seq(from = min(outcome$value), to = max(outcome$value), by = 12)) +
+  geom_contour(aes(z = value,
+                   colour = factor(..level.. == max(surface) - 1.92,
+                                   levels = c(F, T),
+                                   labels = c("Single 95% CI "))),
+               breaks = max(surface) - 1.92) +
+  geom_contour(aes(z = value,
+                   colour = factor(..level.. == max(surface) - 3,
+                                   levels = c(F, T),
+                                   labels = c("Joint 95% CI "))),
+               breaks = max(surface) - 3) +
+  geom_point(mapping = aes(x = MLE[1], y = MLE[2]), colour = "darkblue") +
+  # scale_colour_manual(values = c("black", "red")) + 
+  labs(colour = "Of interest:") +
+  theme_light()
 
 ggplot(data = outcome, mapping = aes(N, theta)) + 
   geom_contour(aes(z = value,
@@ -95,7 +106,7 @@ ggplot(data = outcome, mapping = aes(N, theta)) +
                breaks = c(480, 487.04, 490)) +
   scale_colour_manual(values = c("black", "red")) + 
   labs(colour = "Of interest:")
-  
+
 ggplot(faithfuld, aes(eruptions, waiting)) + 
   geom_contour(aes(z = density, 
                    colour = factor(..level.. == 0.02, 
