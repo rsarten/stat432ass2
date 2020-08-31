@@ -30,12 +30,32 @@ $$Binomial(N, \theta) \times Binomial(N - n_1, \theta) \times Binomial(N - n_1 -
 
 b)
 
-$$\ell(N,\theta)=\ln \left[ \dfrac{N!}{n_1(N-n_1)!}\theta^{n_1}(1-\theta)^{N-n_1}\times\dfrac{(N-n_1)!}{n_2(N-n_1-n_2)!}\theta^{n_2}(1-\theta)^{N-n_1-n_2}\times\dfrac{(N-n_1-n_2)!}{n_3(N-n_1-n_2-n_3)!}\theta^{n_3}(1-\theta)^{N-n_1-n_2-n_3}\right]$$
+$$
+\begin{aligned}
+\ell(N,\theta) = &\ln [  \dfrac{N!}{n_1(N-n_1)!}\theta^{n_1}(1-\theta)^{N-n_1} \\
+& \times \dfrac{(N-n_1)!}{n_2(N-n_1-n_2)!}\theta^{n_2}(1-\theta)^{N-n_1-n_2} \\
+& \times \dfrac{(N-n_1-n_2)!}{n_3(N-n_1-n_2-n_3)!}\theta^{n_3}(1-\theta)^{N-n_1-n_2-n_3}]
+\end{aligned}
+$$
 
-$$\ell(N,\theta) = 
-\ln N! - [\ln n_1 + \ln (N-n_1)] + n_1 \ln \theta + (N-n_1)\ln (1 - \theta) +$$
-$$\ln (N-n_1)! - [\ln n_2 + \ln (N-n_1-n_2)] + n_2 \ln \theta + (N-n_1-n_2)\ln (1 - \theta) +$$
-$$\ln (N-n_1-n_2)! - [\ln n_3 + \ln (N-n_1-n_2-n_3)] + n_3 \ln \theta + (N-n_1-n_2-n_3)\ln (1 - \theta)$$
+$$\begin{aligned}
+\ell(N,\theta) = & \ln N! - [\ln n_1 + \ln (N-n_1)] + n_1 \ln \theta + (N-n_1)\ln (1 - \theta) +\\
+&\ln (N-n_1)! - [\ln n_2 + \ln (N-n_1-n_2)] + n_2 \ln \theta + (N-n_1-n_2)\ln (1 - \theta) + \\
+&\ln (N-n_1-n_2)! - [\ln n_3 + \ln (N-n_1-n_2-n_3)] + n_3 \ln \theta + (N-n_1-n_2-n_3)\ln (1 - \theta)
+\end{aligned}
+$$
+
+We can reduce the components
+
+$n_1\ln\theta + n_2\ln\theta + n_3\ln\theta = (n_1 + n_2 + n_3)\ln\theta$
+
+$(N-n_1)\ln(1-\theta)+(N-n_1-n_2)\ln(1-\theta)+(N-n_1-n_2-n_3)\ln(1-\theta) = (3N-3n_1-2n_2-n_3)\ln(1-\theta)$
+
+$\ln N!+\ln(N-n_1)! ...$
+
+Gives
+
+$$\ln N! - \ln(N-n_1-n_2-n_3)! + (n_1+n_2+n_3)\ln\theta + (3N-3n_1-2n_2-n_3)\ln(1-\theta)$$
 
 finish that bit of algebra somehow
 
@@ -112,6 +132,29 @@ ggplot(data = outcome, mapping = aes(N, theta)) +
   theme_minimal()
 ```
 
+\pagebreak
+
+e)
+
+$$\dfrac{\partial \ell}{\partial\theta} = \dfrac{n_1+n_2+n_3}{\theta} - \dfrac{3N-3n_1-2n_2-n_3}{1-\theta}$$
 
 
-things
+$$ = \dfrac{(n_1+n_2+n_3) - (n_1+n_2+n_3)\theta -(3N-3n_1-2n_2-n_3)\theta}{\theta(1-\theta)}$$
+Setting this to $0$
+
+$$ (n_1+n_2+n_3) - [(n_1+n_2+n_3) +(3N-3n_1-2n_2-n_3)]\theta = 0$$
+
+$$ [(n_1+n_2+n_3) +(3N-3n_1-2n_2-n_3)]\theta = (n_1+n_2+n_3)$$
+
+$$ \theta = \dfrac{(n_1+n_2+n_3)}{(n_1+n_2+n_3)+(3N-3n_1-2n_2-n_3)} = \dfrac{(n_1+n_2+n_3)}{3N-3n_1+n_1-2n_2+n_2-n_3+n_3}$$
+
+$$ \hat{\theta} = \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2}$$
+
+f)
+
+We have
+
+$$ \hat{\theta} = \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2}$$
+and 
+
+$$ 1-\hat{\theta} = \dfrac{3N - 2n_1-n_2}{3N - 2n_1-n_2} - \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2} = \dfrac{3N - 3n_1-2n_2-n_3}{3N - 2n_1-n_2}$$

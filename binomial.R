@@ -96,22 +96,4 @@ ggplot(data = outcome, mapping = aes(N, theta)) +
   geom_point(mapping = aes(x = MLE[1], y = MLE[2]), colour = "darkblue") +
   # scale_colour_manual(values = c("black", "red")) + 
   labs(colour = "Of interest:") +
-  theme_light()
-
-ggplot(data = outcome, mapping = aes(N, theta)) + 
-  geom_contour(aes(z = value,
-                   colour = factor(..level.. == max(surface) - 3,
-                                   levels = c(F, T),
-                                   labels = c("something", "95% CI"))),
-               breaks = c(480, 487.04, 490)) +
-  scale_colour_manual(values = c("black", "red")) + 
-  labs(colour = "Of interest:")
-
-ggplot(faithfuld, aes(eruptions, waiting)) + 
-  geom_contour(aes(z = density, 
-                   colour = factor(..level.. == 0.02, 
-                                   levels = c(F, T), 
-                                   labels = c("Others", "0.02"))),
-               breaks = 0.005*0:10) + 
-  scale_colour_manual(values = c("black", "red")) + 
-  labs(colour = "Of interest:")
+  theme_minimal()
