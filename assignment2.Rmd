@@ -269,11 +269,64 @@ So we can calculate the standard error as
 
 $$SE[\hat\lambda]=\dfrac{\sqrt{\sum_{i=1}^{n}x_i}}{n}$$
 
-```{r counts}
+```{r counts_analytic}
 counts <- readr::read_rds("counts.rds")
 MLE <- sum(counts)/length(counts) # or mean(counts)
 SE <- (sqrt(sum(counts))/length(counts)) %>% round(digits = 2)
 LOWER <- (MLE - SE * 1.96) %>% round(digits = 2)
 UPPER <- (MLE + SE * 1.96) %>% round(digits = 2)
 cbind(MLE, SE, LOWER, UPPER)
+```
+
+```{r counts_numerc}
+poisson_llfunc <- function(lambda, counts) {
+  -(length(counts) * lambda) + sum(counts) * log(lambda)
+}
+
+optim_fit <- optim(par = 1,
+                   fn = poisson_llfunc,
+                   counts = counts,
+                   lower = 1e-3,
+                   upper = Inf,
+                   method = "L-BFGS-B",
+                   control = list(fnscale = -1),
+                   hessian = TRUE)
+MLE <- optim_fit$par
+MLE
+```
+
+```{r plot_poisson}
+n_vals <- seq(from = 3.5, to = 6, length = 100)
+data <- data.frame(x = n_vals,
+                   y = poisson_llfunc(n_vals, counts))
+
+log_max <- optim_fit$value
+crit_point <- optim_fit$value - 0.5 * qchisq(0.95, df = 1)
+ci_func <- function(critical_point, ...) poisson_llfunc(...) - critical_point
+
+lower_ci <- uniroot(ci_func,
+                    interval = c(0, MLE),
+                    counts = counts,
+                    critical_point = crit_point)$root
+upper_ci <- uniroot(ci_func,
+                    interval = c(MLE, MLE*5),
+                    counts = counts,
+                    critical_point = crit_point)$root
+
+
+ggplot(data = data, mapping = aes(x = x, y = y)) + 
+  geom_line() +
+  geom_point(aes(x = MLE, y = log_max, color = "red")) +
+  geom_text(aes(x = MLE, y = log_max + 0.4, label = "MLE")) +
+  geom_hline(yintercept=crit_point, linetype="dashed", color = "red") +
+  geom_vline(xintercept=lower_ci, linetype="dashed", color = "red") +
+  geom_vline(xintercept=upper_ci, linetype="dashed", color = "red") +
+  geom_point(aes(x = lower_ci, y = crit_point, color = "red")) +
+  geom_point(aes(x = upper_ci, y = crit_point, color = "red")) +
+  geom_text(aes(x = lower_ci + 0.13, y = crit_point - 0.4, label = "Lower")) +
+  geom_text(aes(x = upper_ci - 0.13, y = crit_point - 0.4, label = "Upper")) +
+  ggtitle("Likelihood ratio confidence interval boundaries for MLE of", expression(lambda)) +
+  xlab(expression(lambda)) + ylab("Log-likelihood") +
+  theme(legend.position="none")
+
 ```

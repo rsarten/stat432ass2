@@ -303,3 +303,32 @@ remote: Resolving deltas:   0% (0/3)[Kremote: Resolving deltas:  33% (1/3)[K
 To https://github.com/rsarten/stat432ass2.git
    9aafdfb..af1f19d  master -> master
 ]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git git commit -m "statr [K[K[Krt q2"
+git: 'git' is not a git command. See 'git --help'.
+
+The most similar command is
+	init
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git git commit -m "start q2"[1P[1P[1P
+[master d958978] start q2
+ 12 files changed, 163 insertions(+), 1411 deletions(-)
+ delete mode 100644 assignment2.log
+ create mode 100644 assignment2.pdf
+ delete mode 100644 assignment2.tex
+ create mode 100644 counts.rds
+ create mode 100644 counts.txt
+ create mode 100644 counts_test.rds
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ gi [Kt push origin master 
+error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': rsarten
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://rsarten@github.com': 
+Enumerating objects: 32, done.
+Counting objects:   3% (1/32)Counting objects:   6% (2/32)Counting objects:   9% (3/32)Counting objects:  12% (4/32)Counting objects:  15% (5/32)Counting objects:  18% (6/32)Counting objects:  21% (7/32)Counting objects:  25% (8/32)Counting objects:  28% (9/32)Counting objects:  31% (10/32)Counting objects:  34% (11/32)Counting objects:  37% (12/32)Counting objects:  40% (13/32)Counting objects:  43% (14/32)Counting objects:  46% (15/32)Counting objects:  50% (16/32)Counting objects:  53% (17/32)Counting objects:  56% (18/32)Counting objects:  59% (19/32)Counting objects:  62% (20/32)Counting objects:  65% (21/32)Counting objects:  68% (22/32)Counting objects:  71% (23/32)Counting objects:  75% (24/32)Counting objects:  78% (25/32)Counting objects:  81% (26/32)Counting objects:  84% (27/32)Counting objects:  87% (28/32)Counting objects:  90% (29/32)Counting objects:  93% (30/32)Counting objects:  96% (31/32)Counting objects: 100% (32/32)Counting objects: 100% (32/32), done.
+Delta compression using up to 4 threads
+Compressing objects:   6% (1/16)Compressing objects:  12% (2/16)Compressing objects:  18% (3/16)Compressing objects:  25% (4/16)Compressing objects:  31% (5/16)Compressing objects:  37% (6/16)Compressing objects:  43% (7/16)Compressing objects:  50% (8/16)Compressing objects:  56% (9/16)Compressing objects:  62% (10/16)Compressing objects:  68% (11/16)Compressing objects:  75% (12/16)Compressing objects:  81% (13/16)Compressing objects:  87% (14/16)Compressing objects:  93% (15/16)Compressing objects: 100% (16/16)Compressing objects: 100% (16/16), done.
+Writing objects:   5% (1/18)Writing objects:  11% (2/18)Writing objects:  16% (3/18)Writing objects:  22% (4/18)Writing objects:  27% (5/18)Writing objects:  33% (6/18)Writing objects:  38% (7/18)Writing objects:  44% (8/18)Writing objects:  50% (9/18)Writing objects:  55% (10/18)Writing objects:  61% (11/18)Writing objects:  66% (12/18)Writing objects:  72% (13/18)Writing objects:  77% (14/18)Writing objects:  83% (15/18)Writing objects:  88% (16/18)Writing objects:  94% (17/18)Writing objects: 100% (18/18)Writing objects: 100% (18/18), 260.76 KiB | 14.49 MiB/s, done.
+Total 18 (delta 6), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
+To https://github.com/rsarten/stat432ass2.git
+   af1f19d..d958978  master -> master
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ (i-search)`': [K[C[8@failed i-search)`q[C[C[C]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .
