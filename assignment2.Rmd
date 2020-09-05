@@ -124,33 +124,33 @@ ggplot(data = outcome, mapping = aes(N, theta)) +
 
 e)
 
-$\dfrac{\partial \ell}{\partial\theta} = \dfrac{n_1+n_2+n_3}{\theta} - \dfrac{3N-3n_1-2n_2-n_3}{1-\theta}$
+$$\dfrac{\partial \ell}{\partial\theta} = \dfrac{n_1+n_2+n_3}{\theta} - \dfrac{3N-3n_1-2n_2-n_3}{1-\theta}$$
 
-$ = \dfrac{(n_1+n_2+n_3) - (n_1+n_2+n_3)\theta -(3N-3n_1-2n_2-n_3)\theta}{\theta(1-\theta)} $
+$$ = \dfrac{(n_1+n_2+n_3) - (n_1+n_2+n_3)\theta -(3N-3n_1-2n_2-n_3)\theta}{\theta(1-\theta)} $$
 
 Setting this to $0$
 
-$ (n_1+n_2+n_3) - [(n_1+n_2+n_3) +(3N-3n_1-2n_2-n_3)]\theta = 0$
+$$ (n_1+n_2+n_3) - [(n_1+n_2+n_3) +(3N-3n_1-2n_2-n_3)]\theta = 0$$
 
-$ [(n_1+n_2+n_3) +(3N-3n_1-2n_2-n_3)]\theta = (n_1+n_2+n_3)$
+$$ [(n_1+n_2+n_3) +(3N-3n_1-2n_2-n_3)]\theta = (n_1+n_2+n_3)$$
 
-$ \theta = \dfrac{(n_1+n_2+n_3)}{(n_1+n_2+n_3)+(3N-3n_1-2n_2-n_3)} = \dfrac{(n_1+n_2+n_3)}{3N-3n_1+n_1-2n_2+n_2-n_3+n_3}$
+$$ \theta = \dfrac{(n_1+n_2+n_3)}{(n_1+n_2+n_3)+(3N-3n_1-2n_2-n_3)} = \dfrac{(n_1+n_2+n_3)}{3N-3n_1+n_1-2n_2+n_2-n_3+n_3}$$
 
-$ \hat{\theta} = \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2}$
+$$ \hat{\theta} = \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2}$$
 
 f)
 
 We have
 
-$ \hat{\theta} = \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2}$
+$$ \hat{\theta} = \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2}$$
 
 and 
 
-$ 1-\hat{\theta} = \dfrac{3N - 2n_1-n_2}{3N - 2n_1-n_2} - \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2} = \dfrac{3N - 3n_1-2n_2-n_3}{3N - 2n_1-n_2}$
+$$ 1-\hat{\theta} = \dfrac{3N - 2n_1-n_2}{3N - 2n_1-n_2} - \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2} = \dfrac{3N - 3n_1-2n_2-n_3}{3N - 2n_1-n_2}$$
 
 So we can rewrite the original kernel of the log likelihood in terms of $N$ as:
 
-$\begin{aligned}\ell(N) =& \ln N!-\ln (N-n_1-n_2-n_3)!+(n_1+n_2+n_3)\ln \left(\dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2}\right) + \\&(3N-3n_1-2n_2-n_3)\ln \left(\dfrac{3N - 3n_1-2n_2-n_3}{3N - 2n_1-n_2}\right)\end{aligned}$
+$$\begin{aligned}\ell(N) =& \ln N!-\ln (N-n_1-n_2-n_3)!+(n_1+n_2+n_3)\ln \left(\dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2}\right) + \\&(3N-3n_1-2n_2-n_3)\ln \left(\dfrac{3N - 3n_1-2n_2-n_3}{3N - 2n_1-n_2}\right)\end{aligned}$$
 
 $\begin{aligned}\ell(N)=&\ln N!-\ln N!-\ln (N-n_1-n_2-n_3)!+ \\&(n_1+n_2+n_3)\ln (n_1+n_2+n_3)-(n_1+n_2+n_3)\ln(3N-2n_1-n_2)+\\&(3N-3n_1-2n_2-n_3)\ln (3N - 3n_1-2n_2-n_3)-(3N-3n_1-2n_2-n_3)\ln(3N -2n_1-n_2)\end{aligned}$
 
@@ -196,19 +196,84 @@ ci_func <- function(critical_value, ...) {
   llfunc_N(...) - critical_value
 }
 
-lower <- uniroot(ci_func, interval = c(N_0, N_hat), 
-                 n1 = n1, n2 = n2, n3 = n3, 
-                 critical_value = crit_point)$root
-upper <- uniroot(ci_func, interval = c(N_hat, 300), 
-                 n1 = n1, n2 = n2, n3 = n3, 
-                 critical_value = crit_point)$root
+lower_ci <- uniroot(ci_func, interval = c(N_0, N_hat), 
+                    n1 = n1, n2 = n2, n3 = n3, 
+                    critical_value = crit_point)$root
+upper_ci <- uniroot(ci_func, interval = c(N_hat, 300), 
+                    n1 = n1, n2 = n2, n3 = n3, 
+                    critical_value = crit_point)$root
 
-n_vals <- seq(from = n1+n2+n3, to = 260, length = 100)
+cbind(N_hat, lower_ci, upper_ci)
+```
+
+The univariate log-likelihood estimate for $\hat{N}$ = `r N_hat` 
+
+with 95% confidence interval (`r round(lower_ci, digits = 2)`, `r round(upper_ci, digits = 2)`).
+
+Compared with the confidence interval in (c), this interval is similar in size, but is no longer symmetric around the MLE.
+
+```{r plot_N}
+n_vals <- seq(from = 163, to = 260, length = 100)
 data <- data.frame(x = n_vals,
                    y = llfunc_N(n_vals, n1 = n1, n2 = n2, n3 = n3))
 
 ggplot(data = data, mapping = aes(x = x, y = y)) + 
   geom_line() +
-  geom_point(aes(x = N_hat, y = log_max))
+  geom_point(aes(x = N_hat, y = log_max, color = "red")) +
+  geom_text(aes(x = N_hat + 0.4, y = log_max + 0.4, label = "MLE")) +
+  geom_hline(yintercept=crit_point, linetype="dashed", color = "red") +
+  geom_vline(xintercept=lower_ci, linetype="dashed", color = "red") +
+  geom_vline(xintercept=upper_ci, linetype="dashed", color = "red") +
+  geom_point(aes(x = lower_ci, y = crit_point, color = "red")) +
+  geom_point(aes(x = upper_ci, y = crit_point, color = "red")) +
+  geom_text(aes(x = lower_ci + 5, y = crit_point - 0.4, label = "Lower")) +
+  geom_text(aes(x = upper_ci - 5, y = crit_point - 0.4, label = "Upper")) +
+  ggtitle("Confidence interval boundaries for MLE of Univariate log-likelihood for N") +
+  xlab("N") + ylab("Log-likelihood") +
+  theme(legend.position="none")
+```
 
+h)
+
+Given the 95% profile liklihood-ratio for N calculated above, and that we know a total of 159 rats were caught over the three occasions, we can our confidence interval for R to be $(lower - 159, upper - 159) = (171 - 159, 230 - 159) = (12, 71)$ (with rounding to the nearest whole rat).
+
+## Question 2
+
+a)
+
+$\begin{aligned}\ell(\lambda, x)& = \log(\prod_{i = 1}^{n} \left( \dfrac{e^{-\lambda}\lambda^{x_i}}{x_i!} \right)) \\ &=\sum_{i=1}^{n} (-\lambda + x_i\ln \lambda - \ln (x_i!) ) \\ &=-n\lambda + \left(\sum_{i=1}^{n}x_i \right) \ln \lambda-\sum_{i=1}^{n}\ln(x_i!) \\ \end{aligned}$
+
+The last term can be dropped, giving the kernel of the log likelihood
+
+$$-n\lambda + \left(\sum_{i=1}^{n}x_i \right) \ln \lambda$$
+
+Differentiating gives
+
+$$ \dfrac{d \ell}{d \lambda} = -n + \dfrac{ \sum_{i=1}^{n}x_i}{ \lambda } $$
+
+Setting this to 0 gives
+
+$$\hat{\lambda} = \dfrac{\sum_{i=1}^{n}x_i}{n}$$
+
+We can calculte the standard error by taking the second derivative of the log-likelihood at the MLE and calculating the negative inverse
+
+$$\dfrac{d^2\ell}{d\lambda^2} = -\dfrac{\sum_{i=1}^{n}x_i}{\lambda^2}$$
+
+$$\left. \dfrac{d^2\ell}{d\lambda^2}\right\vert_{\hat{\lambda}} = -\left[\dfrac{n}{\sum_{i=1}^{n}x_i}\right]^2 \times \sum_{i=1}^{n}x_i  = -\dfrac{n^2}{\sum_{i=1}^{n}x_i}$$
+
+The negative inverse is
+
+$$\dfrac{\sum_{i=1}^{n}x_i}{n^2}$$
+
+So we can calculate the standard error as
+
+$$SE[\hat\lambda]=\dfrac{\sqrt{\sum_{i=1}^{n}x_i}}{n}$$
+
+```{r counts}
+counts <- readr::read_rds("counts.rds")
+MLE <- sum(counts)/length(counts) # or mean(counts)
+SE <- (sqrt(sum(counts))/length(counts)) %>% round(digits = 2)
+LOWER <- (MLE - SE * 1.96) %>% round(digits = 2)
+UPPER <- (MLE + SE * 1.96) %>% round(digits = 2)
+cbind(MLE, SE, LOWER, UPPER)
 ```
