@@ -292,11 +292,8 @@ optim_fit <- optim(par = 1,
                    control = list(fnscale = -1),
                    hessian = TRUE)
 MLE <- optim_fit$par
-MLE
-```
 
-```{r plot_poisson}
-n_vals <- seq(from = 3.5, to = 6, length = 100)
+n_vals <- seq(from = MLE - 1, to = MLE + 1, length = 100)
 data <- data.frame(x = n_vals,
                    y = poisson_llfunc(n_vals, counts))
 
@@ -312,8 +309,10 @@ upper_ci <- uniroot(ci_func,
                     interval = c(MLE, MLE*5),
                     counts = counts,
                     critical_point = crit_point)$root
+cbind(MLE, lower_ci, upper_ci)
+```
 
-
+```{r plot_poisson}
 ggplot(data = data, mapping = aes(x = x, y = y)) + 
   geom_line() +
   geom_point(aes(x = MLE, y = log_max, color = "red")) +
@@ -325,8 +324,76 @@ ggplot(data = data, mapping = aes(x = x, y = y)) +
   geom_point(aes(x = upper_ci, y = crit_point, color = "red")) +
   geom_text(aes(x = lower_ci + 0.13, y = crit_point - 0.4, label = "Lower")) +
   geom_text(aes(x = upper_ci - 0.13, y = crit_point - 0.4, label = "Upper")) +
-  ggtitle("Likelihood ratio confidence interval boundaries for MLE of", expression(lambda)) +
+  #ggtitle("Likelihood ratio confidence interval boundaries for MLE of", expression(lambda)) +
+  ggtitle(expression(paste("Likelihood ratio confidence interval boundaries for MLE of ", lambda))) +
   xlab(expression(lambda)) + ylab("Log-likelihood") +
   theme(legend.position="none")
 
+```
+
+c)
+
+  i)
+
+$\ell(\boldsymbol{\lambda}, \boldsymbol{\pi}|\boldsymbol{x}) = \sum\limits_{i=1}^n\ln \left( \sum\limits_{g=1}^G \pi_g \dfrac{e^{-\lambda}\lambda^{x_i}}{x_i!} \right)$
+
+$\ell_C(\boldsymbol{\lambda}, \boldsymbol{\pi}|\boldsymbol{x}, Z) = \sum\limits_{i=1}^n\ln \left( \sum\limits_{g=1}^G z_{ig} \pi_g \dfrac{e^{-\lambda}\lambda^{x_i}}{x_i!} \right)$ where $z_{ig}$ has value 0 or 1
+
+  ii)
+  
+If we are looking at each $g=1, ...,G$ then we can ignore the $\pi_g$ term, as we are not concerned with the proportion in the group $g$. We can also exploit that $z_{ig}$ is 0 or 1, but treating it as an exponent.
+
+$\begin{aligned}\ell_C(\boldsymbol{\lambda}, \boldsymbol{\pi}|\boldsymbol{x}, Z) &= \sum\limits_{i=1}^n\ln \left( z_{i} \dfrac{e^{-\lambda}\lambda^{x_i}}{x_i!} \right) \\ &=\sum\limits_{i=1}^n\ln \left(  \dfrac{e^{-\lambda}\lambda^{x_i}}{x_i!} \right)^{z_{i}} \\ &=\sum\limits_{i=1}^n z_{i}\ln \left(  \dfrac{e^{-\lambda}\lambda^{x_i}}{x_i!} \right) \\ &=\sum\limits_{i=1}^n z_{i} \left( -\lambda + x_i\ln \lambda - \ln x_i! \right) \\ &=-\lambda\sum\limits_{i=1}^n z_{i} + \sum\limits_{i=1}^n z_{i}x_i \ln \lambda - \sum\limits_{i=1}^n z_{i}\ln x_i! \end{aligned}$
+
+$\dfrac{\partial\ell_C}{\partial\lambda} = -\sum\limits_{i=1}^n z_{i} + \dfrac{\sum_{i=1}^n z_{i}x_i}{\lambda}$
+
+Setting equal to 0 and solving
+
+$\dfrac{\sum_{i=1}^n z_{i}x_i}{\lambda} = \sum\limits_{i=1}^n z_{i}$
+
+therefore for each group $g$
+
+$$\hat{\lambda_g} = \dfrac{\sum_{i=1}^n z_{ig}x_i}{\sum_{i=1}^n z_{ig}}$$
+
+  iv)
+  
+```{r poisson_EM}
+n <- length(counts)
+G <- 2L
+
+lambda_start <- c(3, 1)
+pi_start <- c(0.5, 0.5)
+
+parameters <- list(g1 = c(lambda_est = 3, pi_est = 0.5),
+                   g2 = c(lambda_est = 1, pi_est = 0.5))
+
+c <- counts[1:3]
+
+z_col <- function(parameters, x) {
+  parameters["pi_est"] * exp(-parameters["lambda_est"]) * parameters["lambda_est"]^x
+}
+
+z_matrix <- function(parameters, x) {
+  Z <- lapply(parameters, z_col, x) %>% 
+    data.frame() %>%
+    as.matrix()
+  Z/apply(Z, 1, sum)
+}
+
+z_ <- Z/apply(Z, 1, sum)
+apply(z_, 1, sum)
+
+
+while (max(abs(current_estimate - previous_estimate)) > 0.01) {
+  
+  ## E-step - estimate Z from current parameters
+  Z <- z_matrix(parameters, counts)
+  
+  ## M-step - update estimates for parameters
+  new_pi <- apply(Z, 2, mean)
+  new_lambda <- lapply(Z, print)
+  
+}
+
+lapply(Z, print)
 ```
