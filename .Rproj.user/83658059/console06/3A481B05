@@ -352,3 +352,142 @@ remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[K
 To https://github.com/rsarten/stat432ass2.git
    d958978..e4f13ce  master -> master
 ]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git commit -m "code for q2"
+[master 9e37689] code for q2
+ 6 files changed, 96 insertions(+), 11 deletions(-)
+ rewrite .Rproj.user/83658059/console06/INDEX001 (86%)
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git push origin master 
+error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': rsarten
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://rsarten@github.com': 
+Enumerating objects: 29, done.
+Counting objects:   3% (1/29)Counting objects:   6% (2/29)Counting objects:  10% (3/29)Counting objects:  13% (4/29)Counting objects:  17% (5/29)Counting objects:  20% (6/29)Counting objects:  24% (7/29)Counting objects:  27% (8/29)Counting objects:  31% (9/29)Counting objects:  34% (10/29)Counting objects:  37% (11/29)Counting objects:  41% (12/29)Counting objects:  44% (13/29)Counting objects:  48% (14/29)Counting objects:  51% (15/29)Counting objects:  55% (16/29)Counting objects:  58% (17/29)Counting objects:  62% (18/29)Counting objects:  65% (19/29)Counting objects:  68% (20/29)Counting objects:  72% (21/29)Counting objects:  75% (22/29)Counting objects:  79% (23/29)Counting objects:  82% (24/29)Counting objects:  86% (25/29)Counting objects:  89% (26/29)Counting objects:  93% (27/29)Counting objects:  96% (28/29)Counting objects: 100% (29/29)Counting objects: 100% (29/29), done.
+Delta compression using up to 4 threads
+Compressing objects:   7% (1/13)Compressing objects:  15% (2/13)Compressing objects:  23% (3/13)Compressing objects:  30% (4/13)Compressing objects:  38% (5/13)Compressing objects:  46% (6/13)Compressing objects:  53% (7/13)Compressing objects:  61% (8/13)Compressing objects:  69% (9/13)Compressing objects:  76% (10/13)Compressing objects:  84% (11/13)Compressing objects:  92% (12/13)Compressing objects: 100% (13/13)Compressing objects: 100% (13/13), done.
+Writing objects:   6% (1/15)Writing objects:  13% (2/15)Writing objects:  20% (3/15)Writing objects:  26% (4/15)Writing objects:  33% (5/15)Writing objects:  40% (6/15)Writing objects:  46% (7/15)Writing objects:  53% (8/15)Writing objects:  60% (9/15)Writing objects:  66% (10/15)Writing objects:  73% (11/15)Writing objects:  80% (12/15)Writing objects:  86% (13/15)Writing objects:  93% (14/15)Writing objects: 100% (15/15)Writing objects: 100% (15/15), 131.68 KiB | 7.32 MiB/s, done.
+Total 15 (delta 6), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
+To https://github.com/rsarten/stat432ass2.git
+   e4f13ce..9e37689  master -> master
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ pandoc -s assignment2.Rmd -t latex -o assignment.pdf --highlight-style=tango -SS
+--smart/-S has been removed.  Use +smart or -smart extension instead.
+For example: pandoc -f markdown+smart -t markdown-smart.
+Try pandoc --help for more information.
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ pandoc -s assignment2.Rmd -t latex -o assignment.pdf --highlight-style=tango -SS[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+Error producing PDF.
+! You can't use `macro parameter character #' in horizontal mode.
+l.172   #
+
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$  echo FB2C133F && /usr/bin/env && echo FA33E0D3
+FB2C133F
+R_PDFVIEWER=/usr/bin/xdg-open
+R_RD4PDF=times,inconsolata,hyper
+CONDA_SHLVL=1
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+LD_LIBRARY_PATH=/usr/lib/R/lib::/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/default-java/lib/server
+CONDA_EXE=/home/rory/anaconda3/bin/conda
+RS_RPOSTBACK_PATH=/usr/lib/rstudio/bin/rpostback
+LESSCLOSE=/usr/bin/lesspipe %s %s
+R_SHARE_DIR=/usr/share/R/share
+LANG=en_NZ.UTF-8
+GDM_LANG=en_NZ
+HISTCONTROL=ignoreboth
+DISPLAY=:0
+RS_PPM_FD_READ=17
+TAR=/bin/tar
+EDITOR=vi
+R_BROWSER=xdg-open
+GTK_OVERLAY_SCROLLING=1
+R_DOC_DIR=/usr/share/R/doc
+R_SESSION_TMPDIR=/tmp/RtmpzAQIxY
+LN_S=ln -s
+CONDA_PREFIX=/home/rory/anaconda3
+RSTUDIO_SESSION_ID=B595C163
+R_LIBS_USER=~/R/x86_64-pc-linux-gnu-library/3.4
+XDG_VTNR=7
+GIO_LAUNCHED_DESKTOP_FILE_PID=31998
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+RS_PPM_FD_WRITE=20
+MANDATORY_PATH=/usr/share/gconf/cinnamon.mandatory.path
+_CE_M=
+XDG_SESSION_ID=c2
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/rory
+R_INCLUDE_DIR=/usr/share/R/include
+USER=rory
+PAGER=/usr/bin/pager
+DESKTOP_SESSION=cinnamon
+RS_SHARED_SECRET=16816927778469308861804289383
+DEFAULTS_PATH=/usr/share/gconf/cinnamon.default.path
+QT_QPA_PLATFORMTHEME=qt5ct
+PWD=/home/rory/Projects/STAT432/assignment2
+HOME=/home/rory
+CONDA_PYTHON_EXE=/home/rory/anaconda3/bin/python
+SED=/bin/sed
+SSH_AGENT_PID=1292
+RSTUDIO_PANDOC=/usr/lib/rstudio/bin/pandoc
+R_PAPERSIZE=letter
+QT_ACCESSIBILITY=1
+XDG_SESSION_TYPE=x11
+XDG_DATA_DIRS=/usr/share/cinnamon:/usr/share/gnome:/home/rory/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+R_SYSTEM_ABI=linux,gcc,gxx,gfortran,?
+RSTUDIO=1
+R_ZIPCMD=/usr/bin/zip
+_CE_CONDA=
+R_PAPERSIZE_USER=a4
+XDG_SESSION_DESKTOP=cinnamon
+CLICOLOR_FORCE=1
+R_HOME=/usr/lib/R
+GJS_DEBUG_OUTPUT=stderr
+R_BZIPCMD=/bin/bzip2
+CONDA_PROMPT_MODIFIER=(base) 
+GTK_MODULES=gail:atk-bridge
+RSTUDIO_USER_IDENTITY=rory
+RS_LOCAL_PEER=/tmp/12710-rsession
+RSTUDIO_SESSION_PORT=12710
+RMARKDOWN_MATHJAX_PATH=/usr/lib/rstudio/resources/mathjax-26
+TERM=xterm-256color
+SHELL=/bin/bash
+R_PRINTCMD=/usr/bin/lpr
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+R_GZIPCMD=/bin/gzip -n
+QT_IM_MODULE=compose
+RSTUDIO_TERM=3A481B05
+XDG_CURRENT_DESKTOP=X-Cinnamon
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/rstudio.desktop
+RSTUDIO_WINUTILS=bin/winutils
+XDG_SEAT=seat0
+SHLVL=7
+LANGUAGE=en_NZ:en
+PROMPT_COMMAND=echo -ne "\033]0;${PWD/#${HOME}/~}\007"
+R_PLATFORM=x86_64-pc-linux-gnu
+R_LIBS_SITE=/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library
+GDMSESSION=cinnamon
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+R_UNZIPCMD=/usr/bin/unzip
+LOGNAME=rory
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+GIT_ASKPASS=rpostback-askpass
+XDG_RUNTIME_DIR=/run/user/1000
+XAUTHORITY=/home/rory/.Xauthority
+RSTUDIO_PROJ_NAME=assignment2
+RSTUDIO_CONSOLE_WIDTH=123
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
+^C
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ gt [K[Kit commit -m "
+> ^C
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ endof [K[K[K of q2"
+> end of q2"[C[Cgit commit -m "
+ echo FB2C133F && /usr/bin/env && echo FA33E0D3[A[C[C[5Pend of q2"
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K^C
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ end of q2"git commit -m "
+ echo FB2C133F && /usr/bin/env && echo FA33E0D3[A]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ [C[C[C[C[6Padd .
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccommit -m "
+ echo FB2C133F && /usr/bin/env && echo FA33E0D3[A]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ [C[C[C[C[6Padd .
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccommit -m "
+ echo FB2C133F && /usr/bin/env && echo FA33E0D3[A]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ [5Pend of q2"
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kgit add .
