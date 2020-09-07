@@ -390,7 +390,7 @@ z_matrix <- function(parameters, x) {
 calc_lambda <- function(Z, x)
   as.data.frame(Z) %>% `*`(x) %>% apply(2, sum) %>% `/`(apply(Z, 2, sum))
 
-not_converged <- function(current_para, previous_para, threshold = 0.01)
+not_converged <- function(current_para, previous_para, threshold = 1e-4)
   any(max(abs(unlist(current_para) - unlist(previous_para))) > threshold)
 ####################################################
 
