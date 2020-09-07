@@ -491,3 +491,42 @@ XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
 [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccommit -m "
  echo FB2C133F && /usr/bin/env && echo FA33E0D3[A]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ [5Pend of q2"
 [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kgit add .
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git commit -m "end of q2"
+[master 7b1024d] end of q2
+ 6 files changed, 184 insertions(+), 34 deletions(-)
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git push origin master 
+error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': rsarten
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://rsarten@github.com': 
+Enumerating objects: 29, done.
+Counting objects:   3% (1/29)Counting objects:   6% (2/29)Counting objects:  10% (3/29)Counting objects:  13% (4/29)Counting objects:  17% (5/29)Counting objects:  20% (6/29)Counting objects:  24% (7/29)Counting objects:  27% (8/29)Counting objects:  31% (9/29)Counting objects:  34% (10/29)Counting objects:  37% (11/29)Counting objects:  41% (12/29)Counting objects:  44% (13/29)Counting objects:  48% (14/29)Counting objects:  51% (15/29)Counting objects:  55% (16/29)Counting objects:  58% (17/29)Counting objects:  62% (18/29)Counting objects:  65% (19/29)Counting objects:  68% (20/29)Counting objects:  72% (21/29)Counting objects:  75% (22/29)Counting objects:  79% (23/29)Counting objects:  82% (24/29)Counting objects:  86% (25/29)Counting objects:  89% (26/29)Counting objects:  93% (27/29)Counting objects:  96% (28/29)Counting objects: 100% (29/29)Counting objects: 100% (29/29), done.
+Delta compression using up to 4 threads
+Compressing objects:   7% (1/13)Compressing objects:  15% (2/13)Compressing objects:  23% (3/13)Compressing objects:  30% (4/13)Compressing objects:  38% (5/13)Compressing objects:  46% (6/13)Compressing objects:  53% (7/13)Compressing objects:  61% (8/13)Compressing objects:  69% (9/13)Compressing objects:  76% (10/13)Compressing objects:  84% (11/13)Compressing objects:  92% (12/13)Compressing objects: 100% (13/13)Compressing objects: 100% (13/13), done.
+Writing objects:   6% (1/15)Writing objects:  13% (2/15)Writing objects:  20% (3/15)Writing objects:  26% (4/15)Writing objects:  33% (5/15)Writing objects:  40% (6/15)Writing objects:  46% (7/15)Writing objects:  53% (8/15)Writing objects:  60% (9/15)Writing objects:  66% (10/15)Writing objects:  73% (11/15)Writing objects:  80% (12/15)Writing objects:  86% (13/15)Writing objects:  93% (14/15)Writing objects: 100% (15/15)Writing objects: 100% (15/15), 90.50 KiB | 5.66 MiB/s, done.
+Total 15 (delta 7), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/7)[Kremote: Resolving deltas:  14% (1/7)[Kremote: Resolving deltas:  28% (2/7)[Kremote: Resolving deltas:  42% (3/7)[Kremote: Resolving deltas:  57% (4/7)[Kremote: Resolving deltas:  71% (5/7)[Kremote: Resolving deltas:  85% (6/7)[Kremote: Resolving deltas: 100% (7/7)[Kremote: Resolving deltas: 100% (7/7), completed with 7 local objects.[K
+To https://github.com/rsarten/stat432ass2.git
+   9e37689..7b1024d  master -> master
+add .
+
+Command 'add' not found, did you mean:
+
+  command 'ad' from deb netatalk
+  command 'adb' from deb adb
+  command 'axd' from deb afnix
+  command 'amd' from deb am-utils
+  command 'pdd' from deb pdd
+  command 'atd' from deb at
+  command 'aid' from deb id-utils
+  command 'dad' from deb debian-dad
+  command 'ddd' from deb ddd
+  command 'tdd' from deb devtodo
+  command 'dd' from deb coreutils
+  command 'and' from deb and
+  command 'ldd' from deb libc-bin
+  command 'adbd' from deb android-tools-adbd
+
+Try: sudo apt install <deb name>
+
+]0;/home/rory/Projects/STAT432/assignment2]0;rory@rory-laptop: ~/Projects/STAT432/assignment2[01;32mrory@rory-laptop[00m:[01;34m~/Projects/STAT432/assignment2[00m$ git add .

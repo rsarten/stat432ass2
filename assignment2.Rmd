@@ -92,8 +92,6 @@ The maximum likelihood point $\hat{\theta} = 0.45$ with confidence interval $(0.
 
 d)
 
-Contour map of $(N, \theta)$ surface
-
 ```{r contour_map}
 n_vals <- seq(from = n1+n2+n3, to = 260, length = 100)
 theta_vals <- seq(from = 0.2, to = 0.7, length = 100)
@@ -119,7 +117,9 @@ ggplot(data = outcome, mapping = aes(N, theta)) +
                                    labels = c("Joint 95% CI "))),
                breaks = max(surface) - 3) +
   geom_point(mapping = aes(x = MLE[1], y = MLE[2]), colour = "darkblue") +
-  labs(colour = "Of interest:") +
+  labs(colour = "Confidence Intervals") +
+  ggtitle(expression(paste("Contour map of (N, ", theta, ") surface"))) +
+  ylab(expression(theta)) + 
   theme_minimal()
 ```
 
@@ -271,15 +271,20 @@ $$\dfrac{\sum_{i=1}^{n}x_i}{n^2}$$
 So we can calculate the standard error as
 
 $$SE[\hat\lambda]=\dfrac{\sqrt{\sum_{i=1}^{n}x_i}}{n}$$
+b)
+
+  i)
 
 ```{r counts_analytic}
 counts <- readr::read_rds("counts.rds")
 MLE <- sum(counts)/length(counts) # or mean(counts)
 SE <- (sqrt(sum(counts))/length(counts)) %>% round(digits = 2)
-LOWER <- (MLE - SE * 1.96) %>% round(digits = 2)
-UPPER <- (MLE + SE * 1.96) %>% round(digits = 2)
+LOWER <- (MLE - SE * qnorm(0.975)) %>% round(digits = 2)
+UPPER <- (MLE + SE * qnorm(0.975)) %>% round(digits = 2)
 cbind(MLE, SE, LOWER, UPPER)
 ```
+
+  ii)
 
 ```{r counts_numerc}
 poisson_llfunc <- function(lambda, counts) {
@@ -336,13 +341,13 @@ ggplot(data = data, mapping = aes(x = x, y = y)) +
 
 c)
 
-i)
+  i)
 
 $\ell(\boldsymbol{\lambda}, \boldsymbol{\pi}|\boldsymbol{x}) = \sum\limits_{i=1}^n\ln \left( \sum\limits_{g=1}^G \pi_g \dfrac{e^{-\lambda}\lambda^{x_i}}{x_i!} \right)$
 
 $\ell_C(\boldsymbol{\lambda}, \boldsymbol{\pi}|\boldsymbol{x}, Z) = \sum\limits_{i=1}^n\ln \left( \sum\limits_{g=1}^G z_{ig} \pi_g \dfrac{e^{-\lambda}\lambda^{x_i}}{x_i!} \right)$ where $z_{ig}$ has value 0 or 1
 
-ii)
+  ii)
 
 If we are looking at each $g=1, ...,G$ then we can ignore the $\pi_g$ term, as we are not concerned with the proportion in the group $g$. We can also exploit that $z_{ig}$ is 0 or 1, by treating it as an exponent.
 
@@ -358,7 +363,7 @@ therefore for each group $g$
 
 $$\hat{\lambda_g} = \dfrac{\sum_{i=1}^n z_{ig}x_i}{\sum_{i=1}^n z_{ig}}$$
 
-iv)
+  iv)
 
 ```{r poisson_EM}
 
@@ -369,6 +374,9 @@ parameters <- list(g1 = c(lambda_est = 3, pi_est = 0.5),
 previous_parameters <- list(g1 = c(lambda_est = 30, pi_est = 0.5),
                             g2 = c(lambda_est = 1, pi_est = 0.5))
 
+
+####################################################
+## Supporting functions
 z_col <- function(parameters, x)
   parameters["pi_est"] * exp(-parameters["lambda_est"]) * parameters["lambda_est"]^x
 
@@ -384,25 +392,38 @@ calc_lambda <- function(Z, x)
 
 not_converged <- function(current_para, previous_para, threshold = 0.01)
   any(max(abs(unlist(current_para) - unlist(previous_para))) > threshold)
+####################################################
 
 while (not_converged(parameters, previous_parameters)) {
-  
   previous_parameters <- parameters
+  
   ## E-step - estimate Z from current parameters
   Z <- z_matrix(parameters, counts)
   
   ## M-step - update estimates for parameters
-  new_pi <- apply(Z, 2, mean)
-  new_lambda <- calc_lambda(Z, counts)
-  parameters <- purrr::map2(parameters, new_pi, 
+  ##pi_est
+  parameters <- purrr::map2(parameters, apply(Z, 2, mean), 
                             function(x, y) {x["pi_est"] <- y; x})
-  parameters <- purrr::map2(parameters, new_lambda, 
+  ## lambda_est
+  parameters <- purrr::map2(parameters, calc_lambda(Z, counts), 
                             function(x, y) {x["lambda_est"] <- y; x})
 }
 
 parameters
-as.data.frame(Z) %>% lapply(function(x) as.integer(x >= 0.5)) %>% as.data.frame() %>% as.matrix()
 ```
 
-pandoc -s assignment2.Rmd -t latex -o assignment.pdf --highlight-style=tango -S
-"pandoc -s ", paste0(filen,"-out.md"), " -t latex -o ", paste0(filen,".pdf"), " --highlight-style=tango -S"
+## Question 3
+
+a)
+
+$\begin{aligned} \ell(\boldsymbol{p}|\boldsymbol{y}) &=\ln \left( \dfrac{n!}{\prod_{j=1}^m y_j!} \prod\limits_{j=1}^m p_j^{y_j}  \right) \\ &=\ln \left( \dfrac{n!}{\prod_{j=1}^m y_j!} \right) + \ln \left( \prod\limits_{j=1}^m p_j^{y_j}  \right) \\ &=c + \sum\limits_{j=1}^m y_i \ln p_j \quad \quad \text{drop constant} \\ &=\sum\limits_{j=1}^m y_i \ln p_j \end{aligned}$
+
+b)
+
+From the result above we have the case where
+
+$\begin{aligned} \ell(\theta|\boldsymbol{y})&=y_1 \ln p_1 + y_2 \ln p_2 + y_3 \ln p_3 \\ &=y_1\ln \left(\dfrac{1}{2} \right) + y_2\ln\left( \dfrac{1}{4} + \theta \right) + y_3\ln\left( \dfrac{1}{4} - \theta \right) \end{aligned}$
+
+$\begin{aligned} \dfrac{d\ell}{d\theta} &= \dfrac{y_2}{\frac{1}{4}+ \theta} - \dfrac{y_3}{\frac{1}{4}- \theta} \\&\text{set to 0} \\ 0 &=\dfrac{y_2}{\frac{1}{4}+ \theta} - \dfrac{y_3}{\frac{1}{4}- \theta} \\ y_2\left( \frac{1}{4} -\theta\right)&=y_3\left( \frac{1}{4} +\theta\right)\\\theta(y_2+y_3)&=\dfrac{1}{4}(y_2-y_3)\\ \hat{\theta} &=\dfrac{1}{4} \dfrac{y_2-y_3}{y_2+y_3} \end{aligned}$
+
+$\begin{aligned} \dfrac{d^2\ell}{d\theta^2} &= -\dfrac{y_2}{(\frac{1}{4}+ \theta)^2}-\dfrac{y_3}{(\frac{1}{4}- \theta)^2} \\ \left. \dfrac{d^2\ell}{d\theta^2} \right|_{\hat{\theta}} &= -\dfrac{y_2}{(\frac{1}{4}+ \frac{1}{4} \frac{y_2-y_3}{y_2+y_3})^2}-\dfrac{y_3}{(\frac{1}{4}- \frac{1}{4} \frac{y_2-y_3}{y_2+y_3})^2} \\ &= -\dfrac{y_2}{(\frac{1}{4} \frac{2y_2}{y_2+y_3})^2}-\dfrac{y_3}{(\frac{1}{4} \frac{2y_3}{y_2+y_3})^2} \\ &=-\dfrac{y_2}{(\frac{1}{2} \frac{y_2}{y_2+y_3})^2}-\dfrac{y_3}{(\frac{1}{2} \frac{y_3}{y_2+y_3})^2} \\ &=-\dfrac{y_2 [4(y_2+y_3)^2]}{y_2^2}-\dfrac{y_3[4(y_2+y_3)^2]}{y_3^2} \\ &=-4(y_2+y_3)^2\left( \frac{1}{y_2} + \frac{1}{y_3} \right) \\ &= -4\dfrac{(y_2 + y_3)^2}{y_2y_3} \quad\quad \text{then find the negative inverse} \\ &=\frac{1}{4}\dfrac{y_2y_3}{(y_2 + y_3)^2} \quad\quad\quad \text{and square to give} \\ SE[\hat{\theta}]&=\frac{1}{2}\sqrt{\frac{y_2y_3}{(y_2+y_3)^2}} \end{aligned}$
