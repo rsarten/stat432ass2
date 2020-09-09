@@ -35,19 +35,9 @@ $\begin{aligned}\ell(N,\theta) = &\ln [  \dfrac{N!}{n_1(N-n_1)!}\theta^{n_1}(1-\
 
 $\begin{aligned}\ell(N,\theta) = & \ln N! - [\ln n_1 + \ln (N-n_1)] + n_1 \ln \theta + (N-n_1)\ln (1 - \theta) +\\&\ln (N-n_1)! - [\ln n_2 + \ln (N-n_1-n_2)] + n_2 \ln \theta + (N-n_1-n_2)\ln (1 - \theta) + \\&\ln (N-n_1-n_2)! - [\ln n_3 + \ln (N-n_1-n_2-n_3)] + n_3 \ln \theta + (N-n_1-n_2-n_3)\ln (1 - \theta)\end{aligned}$
 
-We can reduce the components
-
-$n_1\ln\theta + n_2\ln\theta + n_3\ln\theta = (n_1 + n_2 + n_3)\ln\theta$
-
-$(N-n_1)\ln(1-\theta)+(N-n_1-n_2)\ln(1-\theta)+(N-n_1-n_2-n_3)\ln(1-\theta) = (3N-3n_1-2n_2-n_3)\ln(1-\theta)$
-
-$\ln N!+\ln(N-n_1)! ...$
-
 Gives
 
 $$\ln N! - \ln(N-n_1-n_2-n_3)! + (n_1+n_2+n_3)\ln\theta + (3N-3n_1-2n_2-n_3)\ln(1-\theta)$$
-
-finish that bit of algebra somehow
 
 c)
 
@@ -123,8 +113,6 @@ ggplot(data = outcome, mapping = aes(N, theta)) +
   theme_minimal()
 ```
 
-\pagebreak
-
 e)
 
 $$\dfrac{\partial \ell}{\partial\theta} = \dfrac{n_1+n_2+n_3}{\theta} - \dfrac{3N-3n_1-2n_2-n_3}{1-\theta}$$
@@ -140,6 +128,7 @@ $$ [(n_1+n_2+n_3) +(3N-3n_1-2n_2-n_3)]\theta = (n_1+n_2+n_3)$$
 $$ \theta = \dfrac{(n_1+n_2+n_3)}{(n_1+n_2+n_3)+(3N-3n_1-2n_2-n_3)} = \dfrac{(n_1+n_2+n_3)}{3N-3n_1+n_1-2n_2+n_2-n_3+n_3}$$
 
 $$ \hat{\theta} = \dfrac{n_1+n_2+n_3}{3N - 2n_1-n_2}$$
+\pagebreak
 
 f)
 
@@ -339,9 +328,10 @@ ggplot(data = data, mapping = aes(x = x, y = y)) +
 
 ```
 
+
 c)
 
-  i)
+  i) this is i)
 
 $\ell(\boldsymbol{\lambda}, \boldsymbol{\pi}|\boldsymbol{x}) = \sum\limits_{i=1}^n\ln \left( \sum\limits_{g=1}^G \pi_g \dfrac{e^{-\lambda}\lambda^{x_i}}{x_i!} \right)$
 
@@ -427,3 +417,63 @@ $\begin{aligned} \ell(\theta|\boldsymbol{y})&=y_1 \ln p_1 + y_2 \ln p_2 + y_3 \l
 $\begin{aligned} \dfrac{d\ell}{d\theta} &= \dfrac{y_2}{\frac{1}{4}+ \theta} - \dfrac{y_3}{\frac{1}{4}- \theta} \\&\text{set to 0} \\ 0 &=\dfrac{y_2}{\frac{1}{4}+ \theta} - \dfrac{y_3}{\frac{1}{4}- \theta} \\ y_2\left( \frac{1}{4} -\theta\right)&=y_3\left( \frac{1}{4} +\theta\right)\\\theta(y_2+y_3)&=\dfrac{1}{4}(y_2-y_3)\\ \hat{\theta} &=\dfrac{1}{4} \dfrac{y_2-y_3}{y_2+y_3} \end{aligned}$
 
 $\begin{aligned} \dfrac{d^2\ell}{d\theta^2} &= -\dfrac{y_2}{(\frac{1}{4}+ \theta)^2}-\dfrac{y_3}{(\frac{1}{4}- \theta)^2} \\ \left. \dfrac{d^2\ell}{d\theta^2} \right|_{\hat{\theta}} &= -\dfrac{y_2}{(\frac{1}{4}+ \frac{1}{4} \frac{y_2-y_3}{y_2+y_3})^2}-\dfrac{y_3}{(\frac{1}{4}- \frac{1}{4} \frac{y_2-y_3}{y_2+y_3})^2} \\ &= -\dfrac{y_2}{(\frac{1}{4} \frac{2y_2}{y_2+y_3})^2}-\dfrac{y_3}{(\frac{1}{4} \frac{2y_3}{y_2+y_3})^2} \\ &=-\dfrac{y_2}{(\frac{1}{2} \frac{y_2}{y_2+y_3})^2}-\dfrac{y_3}{(\frac{1}{2} \frac{y_3}{y_2+y_3})^2} \\ &=-\dfrac{y_2 [4(y_2+y_3)^2]}{y_2^2}-\dfrac{y_3[4(y_2+y_3)^2]}{y_3^2} \\ &=-4(y_2+y_3)^2\left( \frac{1}{y_2} + \frac{1}{y_3} \right) \\ &= -4\dfrac{(y_2 + y_3)^2}{y_2y_3} \quad\quad \text{then find the negative inverse} \\ &=\frac{1}{4}\dfrac{y_2y_3}{(y_2 + y_3)^2} \quad\quad\quad \text{and square to give} \\ SE[\hat{\theta}]&=\frac{1}{2}\sqrt{\frac{y_2y_3}{(y_2+y_3)^2}} \end{aligned}$
+
+c)
+
+$q1 = \dfrac{\text{Pr}(y_1)}{\text{Pr}(y_{12})} = \dfrac{p_1}{p_1 \cap p_2} = \dfrac{\frac{1}{2}}{\frac{1}{2}\frac{1}{4} + \theta} = \dfrac{\frac{1}{2}}{\frac{3}{4} + \theta} = \dfrac{2}{3 + 4\theta}$
+
+As $(y_1, y_2) \sim Bin(y_{12}, \boldsymbol{q}) \quad\text{where}\quad \boldsymbol{q} = (q_1, 1-q_2)$
+
+$q_2 = 1 - q_1 = \dfrac{3 + 4\theta}{3 + 4\theta} - \dfrac{2}{3 + 4\theta} = \dfrac{1 + 4\theta}{3 + 4\theta}$
+
+Given these results it is straightforward to posit
+
+$\hat{y}_1 = y_{12}q_1 = \dfrac{2y_{12}}{3 + 4\theta}$
+
+$\hat{y}_2 = y_{12}q_2 = \dfrac{(1 + 4\theta)y_{12}}{3 + 4\theta}$
+
+d)
+
+```{r 3d}
+y12 <- 592
+parameters <- list(y1 = y12/2, y2 = y12/2, y3 = 183, y12 = 592, theta = 0.2)
+previous_parameters <- list(y1 = 592/2, y2 = y12/2, y3 = 183, y12 = 592, theta = 1)
+
+####################################################
+## Supporting functions
+
+recalc_y <- function(p) {
+  p[["y1"]] <- (2*p[["y12"]])/(3 + 4*p[["theta"]])
+  p[["y2"]] <- ((1 + 4*p[["theta"]])*p[["y12"]])/(3 + 4*p[["theta"]])
+  p
+}
+
+recalc_theta <- function(p) {
+  p[["theta"]] <- (1/4)* (p[["y2"]] - p[["y3"]])/(p[["y2"]] + p[["y3"]])
+  p
+}
+
+not_converged <- function(current_para, previous_para, para = "theta", threshold = 1e-6)
+  abs(current_para[[para]] - previous_para[[para]]) > threshold
+####################################################
+
+while (not_converged(parameters, previous_parameters)) {
+  previous_parameters <- parameters
+  
+  ## E-step - estimate new values for y1 and y2 using current theta
+  parameters <- recalc_y(parameters)
+  
+  ## M-step - update estimate for theta
+  parameters <- recalc_theta(parameters)
+}
+
+parameters
+```
+
+```{r em_est}
+p <- parameters
+se_theta <- (1/2)*sqrt((p[["y2"]]*p[["y3"]])/(p[["y2"]] + p[["y3"]])^3)
+se_theta
+```
+
+The EM estimate $\hat{\theta}$ converged at `r round(parameters[["theta"]], digits = 4)` with a standard error of `r round(se_theta, digits = 4)`
